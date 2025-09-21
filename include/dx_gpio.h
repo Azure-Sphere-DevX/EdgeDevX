@@ -46,7 +46,7 @@ typedef enum
 
 typedef struct
 {
-    void *__line_handle; // points to object of type struct gpiod_line
+    void *__line_handle; // points to object of type struct gpiod_line_request
     int chip_number;
     int line_number;
     char *name;

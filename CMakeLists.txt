@@ -10,6 +10,7 @@ set(AZURE_IOT_SUPPORT ON CACHE BOOL "Enable Azure Cloud support for the project"
 set(Source
     "./src/dx_async.c"
     "./src/dx_json_serializer.c"
+    "./src/dx_mqtt.c"
     "./src/dx_terminate.c"
     "./src/dx_timer.c"
     "./src/dx_utilities.c"
@@ -51,11 +52,22 @@ set(ALL_FILES
 )
 
 ################################################################################
+# MQTT-C Library Configuration
+################################################################################
+# Configure MQTT-C build options
+set(MQTT_C_EXAMPLES OFF CACHE BOOL "Disable MQTT-C examples")
+set(MQTT_C_TESTS OFF CACHE BOOL "Disable MQTT-C tests")
+
+# Add MQTT-C as a subdirectory
+add_subdirectory(MQTT-C)
+
+################################################################################
 # Target
 ################################################################################
 add_library(${PROJECT_NAME} STATIC ${ALL_FILES})
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_include_directories(${PROJECT_NAME} PUBLIC MQTT-C/include)
 
 # set(ROOT_NAMESPACE rpi_libs)
 # set_target_properties(${PROJECT_NAME} PROPERTIES VS_GLOBAL_KEYWORD "EdgeDevX")
@@ -122,6 +134,7 @@ endif()
 target_link_libraries (${PROJECT_NAME}
     curl
     m
+    mqttc
     pthread
     uuid
     uv

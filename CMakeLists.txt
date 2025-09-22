@@ -113,6 +113,9 @@ endif()
 
 # required for dx_gpio on linux support
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    # Use libgpiod 2.x from /usr/local
+    target_include_directories(${PROJECT_NAME} PUBLIC /usr/local/include)
+    target_link_directories(${PROJECT_NAME} PUBLIC /usr/local/lib)
     target_link_libraries (${PROJECT_NAME} gpiod)
 endif()
 

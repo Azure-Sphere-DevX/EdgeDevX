@@ -275,8 +275,6 @@ bool dx_mqttPublish(const DX_MQTT_MESSAGE *message)
         }
         return false;
     }
-
-    dx_Log_Debug("DX MQTT: Published to topic '%s', payload length: %zu\n", message->topic, message->payload_length);
     return true;
 }
 

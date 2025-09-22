@@ -1,6 +1,9 @@
 /* Copyright (c) Microsoft Corporation. All rights reserved.
    Licensed under the MIT License. */
 
+#define _GNU_SOURCE
+#define _POSIX_C_SOURCE 200112L
+
 #include "dx_mqtt.h"
 
 #include "dx_utilities.h"
@@ -21,6 +24,9 @@
 #include <netdb.h>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <sys/select.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 // Internal state management
 static struct mqtt_client _client;

@@ -1,4 +1,4 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
 PROJECT(edge_devx C)
 
 # AZURE_IOT_SUPPORT Variable can be set to ON or OFF by inheriting CMakeLists.txt
